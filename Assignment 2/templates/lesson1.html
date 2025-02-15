@@ -1,0 +1,21 @@
+<!-- templates/lesson1.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 1</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <!-- <h1>Hello, Ravindra Tantuwaya</h1> -->
+    </header>
+    <main>
+        <p>{{ hello_name }}</p> 
+    </main>
+    <nav>
+        <a href="/">Back to Home</a>
+    </nav>
+</body>
+</html>
