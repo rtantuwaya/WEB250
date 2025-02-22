@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Storm Data</title>
+    <!-- <link rel="stylesheet" href="css/styles.css"> -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+<body>
+    <h1>Upload Storm Data CSV</h1>
+    <form method="POST" enctype="multipart/form-data">
+        <input type="file" name="file" accept=".csv">
+        <button type="submit">Upload</button>
+    </form>
+
+    {% if data %}
+        <h2>Storm Categories</h2>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Storm Name</th>
+                    <th>Max Winds (km/h)</th>
+                    <th>Max Winds (mph)</th>
+                    <th>Category</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for storm in data %}
+                    <tr>
+                        <td>{{ storm.date }}</td>
+                        <td>{{ storm.storm_name }}</td>
+                        <td>{{ storm.winds_kmh }}</td>
+                        <td>{{ storm.winds_mph }}</td>
+                        <td class="{{ storm.category_class }}">{{ storm.category }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No storm data available.</p>
+    {% endif %}
+    <nav>
+        <a href="/">Back to Home</a>
+    </nav>
+</body>
+</html>
