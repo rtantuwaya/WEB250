@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math Expression Game</title>
+    <!-- <link rel="stylesheet" href="/static/style.css"> -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <h1>Math Expression Game</h1>
+    
+    <form action="/check_answer" method="post">
+        {% for data in game_data %}
+            <p>{{ data.expression }}</p>
+            <input type="number" name="user_answer" required>
+            <input type="hidden" name="correct_answer" value="{{ data.correct_answer }}">
+            <input type="submit" value="Submit Answer">
+            <br><br>
+        {% endfor %}
+    </form>
+
+</body>
+</html>
