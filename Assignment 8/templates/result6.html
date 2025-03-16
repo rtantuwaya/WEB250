@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorted Earthquake Data</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Sorted Earthquake Data by Magnitude</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Earthquake Name</th>
+                <th>Moment Magnitude</th>
+                <th>Magnitude Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for earthquake in earthquakes %}
+                <tr>
+                    <td>{{ earthquake.name }}</td>
+                    <td>{{ earthquake.magnitude }}</td>
+                    <td class="magnitude-description magnitude-{{ earthquake.description | lower }}">
+                        {{ earthquake.description }}
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
