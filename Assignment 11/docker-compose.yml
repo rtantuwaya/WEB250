@@ -1,0 +1,25 @@
+version: '3'
+services:
+  flask:
+    build: .
+    ports:
+      - "5000:5000"
+    depends_on:
+      - mongodb
+    networks:
+      - flask-mongo-network
+  mongodb:
+    image: mongo:latest
+    ports:
+      - "27018:27017"  # Change the host port here (27018)
+    networks:
+      - flask-mongo-network
+    volumes:
+      - mongodb_data:/data/db
+
+networks:
+  flask-mongo-network:
+    driver: bridge
+
+volumes:
+  mongodb_data:
