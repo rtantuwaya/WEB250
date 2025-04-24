@@ -1,0 +1,21 @@
+{
+  "id": "46c3ee38-5647-4f69-ae25-7e07e448e77f",
+  "version": "2.0",
+  "name": "SeleniumTest",
+  "url": "http://webtestapp-env.eba-xxjcjcxs.us-east-2.elasticbeanstalk.com/",
+  "tests": [{
+    "id": "6e3eae50-87fc-4357-a176-4eb686ce5b2f",
+    "name": "TestThree",
+    "commands": []
+  }],
+  "suites": [{
+    "id": "7d266206-833f-4778-b232-adae677c6ba9",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["6e3eae50-87fc-4357-a176-4eb686ce5b2f"]
+  }],
+  "urls": ["http://webtestapp-env.eba-xxjcjcxs.us-east-2.elasticbeanstalk.com/"],
+  "plugins": []
+}
