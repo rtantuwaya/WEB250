@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD Application</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>CRUD Application</h1>
+
+    <h2>Add New Record</h2>
+    <form action="{{ url_for('add_record') }}" method="POST">
+        <label for="name">Name:</label>
+        <input type="text" name="name" required><br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" name="email" required><br><br>
+
+        <label for="age">Age:</label>
+        <input type="number" name="age" required><br><br>
+
+        <label for="created_at">Created At:</label>
+        <input type="date" name="created_at" required><br><br>
+
+        <input type="submit" value="Add Record">
+    </form>
+
+    <h2>Existing Records</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Age</th>
+                <th>Created At</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for record in records %}
+            <tr>
+                <td>{{ record.name }}</td>
+                <td>{{ record.email }}</td>
+                <td>{{ record.age }}</td>
+                <td>{{ record.created_at }}</td>
+                <td>
+                    <a href="{{ url_for('update_record', id=record.id) }}">Edit</a>
+                    <form action="{{ url_for('delete_record', id=record.id) }}" method="POST" style="display:inline;">
+                        <button type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <nav>
+        <a href="/">Back to Home</a>
+    </nav>
+</body>
+</html>
